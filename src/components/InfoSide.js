@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getHotelLocation} from '../AC';
+import  MainRouter from './routers/MainRouter';
 
 class InfoSide extends Component{
     constructor(props){
@@ -21,16 +22,21 @@ class InfoSide extends Component{
         if(code!==13)
             return;
         getHotelLocation(this.state.hotel);
-        //console.log(this.state.hotel);
         this.setState({hotel:''})
-        //console.log(code)
     }
 
     render(){
         const {hotel}=this.state;
         const {loading, loaded}=this.props;
-        const loadingIcon=loading ? (<div>Loading...</div>) : (<div></div>);
-
+        //const loadingIcon=loading ? (<div>Loading...</div>) : (<MainRouter />);
+        let loadingIcon=null;
+        if(loading){
+            loadingIcon= <div className="inputLable">Loading...</div>
+        } else if(loaded){
+            loadingIcon= <MainRouter className="inputLable" />
+        } else {
+            loadingIcon=<div></div>
+        }
         return(
             <div className="infoSide">
                 <input type='text' value={hotel} onChange={this.handleInputHotel} onKeyDown={this.submitRequest} />

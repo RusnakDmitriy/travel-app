@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+}
+
 .mainScreen{
   position: relative;
   height: 100vh;
@@ -30,3 +34,21 @@ body {
   display: block;
   height: 23px;
 }
+
+.inputLable{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.inputLable h5{
+  margin-bottom: 10px;
+}
+
+.inputItemMenu{
+  margin: 0 5px;
+  font-size: 13px;
+}
+
+
+
+
