@@ -17,8 +17,8 @@ h1, h2, h3, h4, h5, h6{
   position: absolute;
   top: 17vh;
   left: 3vw;
-  height: 100px;
-  width: 280px;
+  height: 130px;
+  width: 350px;
   background-color: rgba(255,255,255,.6);
   backdrop-filter: blur(5px);
   z-index: 1111;
@@ -33,9 +33,10 @@ h1, h2, h3, h4, h5, h6{
   padding: 0 3px;
   display: block;
   height: 23px;
+  width: 250px;
 }
 
-.inputLable{
+.inputLable, .placesLable{
   text-align: center;
   margin-top: 10px;
 }
@@ -45,8 +46,13 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .inputItemMenu{
-  margin: 0 5px;
+  margin: 0 8px;
   font-size: 13px;
+}
+
+.placesLable{
+  font-size: 13px;
+  font-weight: 700;
 }
 
 

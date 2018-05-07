@@ -9,16 +9,10 @@ class Map extends Component {
             center: position,
             zoom: zoom
         })
-        /*new this.props.google.maps.Marker({
-            map: map,
-            position: position
-        })*/
     }
 
     componentWillReceiveProps(nextProps){
-        if(this.props.lat===nextProps.lat || this.props.lng===nextProps.lng)
-            return;
-        const {lat, lng, zoom}=nextProps;
+        const {lat, lng, zoom, places}=nextProps;
         const position={lat:lat, lng:lng};
         const map=new this.props.google.maps.Map(this.refs.map, {
             center: position,
@@ -26,7 +20,23 @@ class Map extends Component {
         })
         new this.props.google.maps.Marker({
             map: map,
-            position: position
+            position: position,
+            title: 'Current hotel location'
+        });
+
+        if(!places.length)
+            return;
+        places.forEach((item)=>{
+            const {lat, lng}=item.location;
+            const plposition={lat:lat, lng:lng};
+            const {name, perex}=item;
+            let text;
+            perex!==null ? text=`-${perex}` : text='';
+            new this.props.google.maps.Marker({
+                map: map,
+                position: plposition,
+                title: `${name} ${text}`
+            })
         })
     }
 
@@ -42,7 +52,8 @@ const mapStateToProps=(state)=>{
     return {
         lat: state.getHotelLocation.lat,
         lng: state.getHotelLocation.lng,
-        zoom: state.getHotelLocation.zoom
+        zoom: state.getHotelLocation.zoom,
+        places: state.getPlacesLocation.places
     }
 };
 
